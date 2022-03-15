@@ -1,5 +1,5 @@
 <template>
-  <div>app 组件</div>
+  <div>app</div>
 </template>
 
 <script>
@@ -11,4 +11,4 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style lang="less" scoped></style>
