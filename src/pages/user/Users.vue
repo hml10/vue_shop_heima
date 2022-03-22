@@ -310,7 +310,7 @@ export default {
       });
     },
 
-    // 修改用户的对话框
+    // 修改用户的对话框、数据回显
     async showEditDialog(id) {
       const { data: res } = await this.$http.get(`users/${id}`);
       if (res.meta.status !== 200) {
