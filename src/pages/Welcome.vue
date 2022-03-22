@@ -1,0 +1,59 @@
+<template>
+  <div class="shadow_wrap">
+    <span class="floating">Welcome 访问主页</span>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'Welcome',
+  data() {
+    return {};
+  },
+};
+</script>
+
+<style lang="less" scoped>
+.shadow_wrap {
+  margin-bottom: 10px;
+
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 34px;
+}
+.floating {
+  height: 150px;
+  line-height: 150px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  transform: translateY(0);
+  transition: transform 1s;
+}
+.floating:after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  height: 8px;
+  width: 100%;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.2);
+  transform: translate(-50%, 0);
+  transition: transform 1s;
+}
+/*鼠标移上去的效果*/
+.floating:hover {
+  transform: translateY(-40px);
+  transition: transform 1s;
+}
+.floating:hover:after {
+  transform: translate(-50%, 40px) scale(0.75);
+  transition: transform 1s;
+}
+</style>
