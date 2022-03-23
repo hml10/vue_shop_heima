@@ -36,7 +36,58 @@
 
       <!-- 角色列表区域 -->
       <el-table :data="roleList" border stripe>
-        <el-table-column type="expand"></el-table-column>
+        <!-- 展开列区 -->
+        <el-table-column type="expand">
+          <template slot-scope="scope">
+            <el-row
+              :class="['dbbottom', index1 === 0 ? 'dbtop' : '', 'vcenter']"
+              v-for="(item1, index1) in scope.row.children"
+              :key="item1.id"
+            >
+              <!-- 一级权限 -->
+              <el-col :span="5">
+                <el-tag closable @close="removeRightById(scope.row, item1.id)">
+                  {{ item1.authName }}
+                </el-tag>
+                <i class="el-icon-caret-right"></i>
+              </el-col>
+              <!-- 二级和三级权限 -->
+              <el-col :span="19">
+                <!-- 通过for循环 嵌套渲染二级权限 -->
+                <el-row
+                  :class="[index2 === 0 ? '' : 'dbtop', 'vcenter']"
+                  v-for="(item2, index2) in item1.children"
+                  :key="item2.id"
+                >
+                  <el-col :span="6">
+                    <el-tag
+                      type="success"
+                      closable
+                      @close="removeRightById(scope.row, item2.id)"
+                    >
+                      {{ item2.authName }}
+                    </el-tag>
+                    <i class="el-icon-caret-right"></i>
+                  </el-col>
+                  <el-col :span="18">
+                    <!-- 通过for循环 嵌套渲染三级权限 -->
+                    <el-tag
+                      closable
+                      type="warning"
+                      v-for="item3 in item2.children"
+                      :key="item3.id"
+                      @close="removeRightById(scope.row, item3.id)"
+                    >
+                      {{ item3.authName }}
+                    </el-tag>
+                  </el-col>
+                </el-row>
+              </el-col>
+            </el-row>
+            <!-- <pre>{{ scope.row }}</pre> -->
+          </template>
+        </el-table-column>
+        <!-- 索引列区 -->
         <el-table-column label="#" type="index"></el-table-column>
         <el-table-column label="角色名称" prop="roleName"></el-table-column>
         <el-table-column label="角色描述" prop="roleDesc"></el-table-column>
@@ -240,7 +291,7 @@ export default {
           // console.log(res);
         })
         .catch(() => {
-          this.$message.error('已取消删除！');
+          this.$message.info('已取消删除！');
         });
     },
 
@@ -279,8 +330,49 @@ export default {
         this.getRolesList();
       });
     },
+
+    // 根据id来删除对应的三级权限数据
+    removeRightById(role, rightId) {
+      this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+      })
+        .then(async () => {
+          const { data: res } = await this.$http.delete(
+            `roles/${role.id}/rights/${rightId}`
+          );
+          if (res.meta.status !== 200) {
+            return this.$message.error('删除失败！');
+          }
+          this.$message.success('删除成功！');
+          role.children = res.data; // 因为删除后接口里面有返回数据，把服务器返回的最新数据，重新赋值即可
+
+          // console.log(res);
+          // this.getRolesList();//直接调用会导致页面更新，从而关闭expand
+        })
+        .catch(() => {
+          this.$message.info('已取消删除！');
+        });
+    },
   },
 };
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.el-tag {
+  margin: 7px 15px;
+}
+
+.dbtop {
+  border-top: 1px solid #eee;
+}
+.dbbottom {
+  border-bottom: 1px solid #eee;
+}
+
+.vcenter {
+  display: flex;
+  align-items: center;
+}
+</style>

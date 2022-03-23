@@ -366,7 +366,7 @@ export default {
           // console.log(res);
         })
         .catch(() => {
-          this.$message.error('已取消删除！');
+          this.$message.info('已取消删除！');
         });
     },
   },
