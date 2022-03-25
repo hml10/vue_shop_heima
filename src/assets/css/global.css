@@ -27,3 +27,12 @@ body,
 .el-pagination {
   margin-top: 15px;
 }
+
+/* 级联选择器的全局样式 */
+.el-cascader-menu {
+  height: 300px;
+}
+
+/* .zk-table--firstProp-header-inner {
+  padding-left: 12px !important;
+} */
