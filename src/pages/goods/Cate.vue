@@ -233,7 +233,7 @@ export default {
 
     //监听级联选择器、选择项发生变化时调用
     parentCateChange(val) {
-      console.log(val);
+      // console.log(val);
       // console.log(this.selectedKeys);
 
       // 如果 selectedKeys 或(val) 数组中的length 等于0，还没有选中父级分类。
