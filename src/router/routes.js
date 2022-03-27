@@ -7,6 +7,7 @@ import Users from '../pages/user/Users.vue'; // 用户列表组件
 import Rights from '../pages/power/Rights.vue'; // 权限列表组件
 import Roles from '../pages/power/Roles.vue'; // 角色列表组件
 import Cate from '../pages/goods/Cate.vue'; // 商品分类
+import Params from '../pages/goods/Params.vue'; // 分类参数
 
 // 暴露路由数组对象
 export default [
@@ -42,6 +43,10 @@ export default [
       {
         path: '/categories',
         component: Cate,
+      },
+      {
+        path: '/params',
+        component: Params,
       },
     ],
   },
