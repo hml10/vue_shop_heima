@@ -25,7 +25,7 @@
           </el-input>
         </el-col>
         <el-col :span="4">
-          <el-button type="primary">添加商品</el-button>
+          <el-button type="primary" @click="goAddPage">添加商品</el-button>
         </el-col>
       </el-row>
 
@@ -55,6 +55,7 @@
               type="primary"
               icon="el-icon-edit"
               size="mini"
+              @click="editList"
             ></el-button>
             <el-button
               type="danger"
@@ -143,6 +144,16 @@ export default {
         .catch(() => {
           this.$message.info('已取消删除！');
         });
+    },
+
+    // 添加商品跳转路由
+    goAddPage() {
+      this.$router.push('/goods/add');
+    },
+
+    // 修改，还未完成
+    editList() {
+      this.$message.info('别点，还未完成！');
     },
   },
 };

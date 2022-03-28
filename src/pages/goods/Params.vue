@@ -336,11 +336,14 @@ export default {
 
       // 获取数据成功后，还需判断具体是 动态数据、还是静态数据
       res.data.forEach((item) => {
-        item.attr_vals = item.attr_vals === '' ? [] : item.attr_vals.split(' '); //不为空才分割
+        // item.attr_vals = item.attr_vals === '' ? [] : item.attr_vals.split(' '); //不为空才分割
+
+        item.attr_vals =
+          item.attr_vals.length === 0 ? [] : item.attr_vals.split(' '); //不为空才分割
         item.inputVisible = false; // 控制文本框的显示或隐藏
         item.inputValue = ''; // 文本框中输入的值，给每一个item单独绑定上
       });
-      // console.log(res.data);
+      // console.log('##', res.data);
 
       if (this.activeName === 'many') {
         this.manyTableDate = res.data; // 保存动态数据

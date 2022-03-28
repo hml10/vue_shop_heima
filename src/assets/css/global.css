@@ -36,3 +36,7 @@ body,
 /* .zk-table--firstProp-header-inner {
   padding-left: 12px !important;
 } */
+
+.el-steps {
+  margin: 15px 0;
+}

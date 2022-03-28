@@ -53,10 +53,20 @@
         <!-- 操作列 -->
         <!-- <template slot="opt" slot-scope="scope"> -->
         <template slot="opt">
-          <el-button type="primary" icon="el-icon-edit" size="mini">
+          <el-button
+            type="primary"
+            icon="el-icon-edit"
+            size="mini"
+            @click="clickNo"
+          >
             编辑
           </el-button>
-          <el-button type="danger" icon="el-icon-delete" size="mini">
+          <el-button
+            type="danger"
+            icon="el-icon-delete"
+            size="mini"
+            @click="clickNo"
+          >
             删除
           </el-button>
         </template>
@@ -277,6 +287,11 @@ export default {
       this.selectedKeys = [];
       this.addCateForm.cat_pid = 0;
       this.addCateForm.cat_level = 0;
+    },
+
+    // 还未完成的编辑和删除
+    clickNo() {
+      this.$message.info('别点，还未完成！');
     },
   },
 };
