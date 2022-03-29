@@ -48,8 +48,8 @@ export default {
     return {
       // 登录表单数据绑定对象
       loginForm: {
-        username: 'admin',
-        password: '123456',
+        username: '',
+        password: '',
       },
 
       //验证规则
