@@ -4,4 +4,4 @@
 
 #### 3、进入素材里 vue_api_server 命令 npm i 下载 node 运行安装包、并启动 node app.js、测试接口
 
-#### 4、写项目前提是：1、打开数据库，2、打开运行 node .\app.js
+#### 4、写项目前提是：1、打开数据库，2、打开运行 node .\app.js 账号：admin 密码：123456
