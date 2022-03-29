@@ -8,8 +8,10 @@ import Rights from '../pages/power/Rights.vue'; // 权限列表组件
 import Roles from '../pages/power/Roles.vue'; // 角色列表组件
 import Cate from '../pages/goods/Cate.vue'; // 商品分类
 import Params from '../pages/goods/Params.vue'; // 分类参数
-import GoodsList from '../pages/goods/List.vue'; //商品列表
-import Add from '../pages/goods/Add.vue';
+import GoodsList from '../pages/goods/List.vue'; // 商品列表
+import Add from '../pages/goods/Add.vue'; // 商品列表 --> 添加商品
+import Order from '../pages/order/Order.vue'; // 订单列表
+import Report from '../pages/report/Reprot.vue'; // 数据报表
 
 // 暴露路由数组对象
 export default [
@@ -57,6 +59,14 @@ export default [
       {
         path: '/goods/add',
         component: Add,
+      },
+      {
+        path: '/orders',
+        component: Order,
+      },
+      {
+        path: '/reports',
+        component: Report,
       },
     ],
   },

@@ -45,8 +45,10 @@
         ></el-table-column>
         <el-table-column label="创建时间" prop="add_time" width="130px">
           <template slot-scope="scope">
-            <!-- {{ scope.add_time | changeTime }} -->
-            {{ scope.add_time | formonment('YYYY年-MM月-DD日 HH时:mm分:ss秒') }}
+            <!-- {{ scope.row.add_time | changeTime }} -->
+            {{
+              scope.row.add_time | formonment('YYYY年-MM月-DD日 HH时:mm分:ss秒')
+            }}
           </template>
         </el-table-column>
         <el-table-column label="操作" width="120px">
